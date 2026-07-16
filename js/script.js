@@ -341,7 +341,7 @@ document.getElementById("beginJourney").onclick=function(){
 // COUNTDOWN
 // ============================
 
-const targetDate = new Date(2026, 6, 16, 0, 0, 0);
+const targetDate = new Date(2026, 6, 17, 0, 0, 0);
 
 function updateCountdown() {
 
