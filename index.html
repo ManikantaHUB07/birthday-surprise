@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Moonlight Birthday Surprise ❤️</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Indie+Flower&family=Kaushan+Script&family=Montserrat:wght@400;700&family=Nunito:wght@400;700&family=Pacifico&family=Parisienne&family=Patrick+Hand&family=Poppins:wght@300;400;500;600;700&family=Sacramento&family=Satisfy&family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+    <!-- Confetti -->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div id="background">
+
+    <div id="stars"></div>
+
+    <div id="moon"></div>
+
+    <div id="clouds"></div>
+
+    <div id="particles"></div>
+
+    <div id="floatingHearts"></div>
+
+</div>
+
+<!-- =========================
+     LOADING SCREEN
+========================= -->
+
+<section id="loadingScreen" class="screen active">
+
+    <div class="glassCard">
+
+        <h2 class="magicTitle">
+
+            ✨ A Magical Journey ✨
+
+        </h2>
+
+        <h1 id="typingText"></h1>
+
+        <div class="progressContainer">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+        <div id="loadingPercent">
+
+            0%
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PIN SCREEN ================= -->
+
+<section id="pinScreen" class="screen">
+
+    <div class="glassCard pinCard">
+
+        <div class="lockIcon">🔒</div>
+
+        <h1>Enter Secret PIN</h1>
+
+        <p class="subText">
+
+            Only the special person knows this ❤️
+
+        </p>
+
+        <div id="pinDots">
+
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+
+        <div class="keypad">
+
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+
+            <button id="clearKey">⌫</button>
+            <button class="key">0</button>
+            <button id="okKey">❤️</button>
+
+        </div>
+
+        <p id="pinError"></p>
+
+    </div>
+
+</section>
+<!-- ===========================
+        WELCOME SCREEN
+=========================== -->
+<section id="welcomeScreen" class="screen">
+
+    <div id="magicScroll">
+
+        <div id="scrollTop"></div>
+
+        <div id="scrollPaper">
+
+            <h2 class="welcomeSmall">
+
+                ✨ Welcome ✨
+
+            </h2>
+
+            <h1 id="welcomeTitle">
+
+                Happy Birthday Chaithu ❤️
+
+            </h1>
+
+            <p id="welcomeText"></p>
+
+            <button id="beginJourney">
+
+                Begin The Journey ✨
+
+            </button>
+
+        </div>
+
+        <div id="scrollBottom"></div>
+
+    </div>
+
+</section>
+<section id="countdownScreen" class="screen">
+
+    <div class="glassCard countdownCard">
+
+        <h2 class="welcomeSmall">
+            ⏳ Countdown
+        </h2>
+
+        <h1 class="countTitle">
+            Your Special Day ❤️
+        </h1>
+
+        <div id="countdownContainer">
+
+            <div class="timeBox">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+
+            <div class="timeBox">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+
+            <div class="timeBox">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+
+            <div class="timeBox">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+
+        </div>
+
+        <p class="countText">
+            Every second brings the celebration closer... ❤️
+        </p>
+
+        <button id="continueGame" style="display:none;">
+            Continue ❤️
+        </button>
+
+    </div>
+
+</section>
+<!-- ===========================
+        HEART GAME
+=========================== -->
+
+<section id="heartGameScreen" class="screen">
+
+    <div class="gameContainer">
+
+        <h1>
+
+            Catch All My Hearts ❤️
+
+        </h1>
+
+        <p>
+
+            Click every heart to unlock your surprise.
+
+        </p>
+
+        <div id="scoreBoard">
+
+            0 / 10
+
+        </div>
+        <div id="heartMessage"></div>
+
+        <div id="heartArea"></div>
+
+    </div>
+
+</section>
+<!-- ===========================
+        GIFT + CAKE SCREEN
+=========================== -->
+
+<section id="cakeScreen" class="screen">
+
+    <div class="cakeContainer">
+
+        <div id="giftBox">
+
+            🎁
+
+        </div>
+
+
+        <p id="giftText">
+
+            Click the gift to open ❤️
+
+        </p>
+
+
+
+        <div id="cakeArea">
+
+
+            <div id="cakeEmoji">
+
+                🎂
+
+            </div>
+
+
+            <div id="candles">
+
+                🕯️🕯️🕯️
+
+            </div>
+
+            <div id="smoke">
+
+                💨
+
+            </div>
+
+
+            <button id="blowButton">
+
+                Blow Candles 💨
+
+            </button>
+
+
+        </div>
+
+
+
+        <h1 id="birthdayWish">
+
+             Happy Birthday 🫶
+
+        </h1>
+
+
+
+        <button id="letterButton">
+
+            Read My Letter 💌
+
+        </button>
+
+
+    </div>
+
+</section>
+<!-- ===========================
+        LETTER SCREEN
+=========================== -->
+
+<section id="letterScreen" class="screen">
+
+
+    <div class="letterContainer">
+
+
+        <div id="envelope">
+
+            💌
+
+        </div>
+
+
+
+        <div id="letterPaper">
+
+
+            <h1>
+
+                For You ❤️
+
+            </h1>
+
+
+            <p id="letterText"></p>
+
+
+
+            <button id="watchAgain">
+
+                 Watch Again💞
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
+
+<!-- JS -->
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

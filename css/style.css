@@ -1,0 +1,1059 @@
+/* ==========================================================
+   MOONLIGHT BIRTHDAY SURPRISE
+   Stage 1
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    font-family:'Poppins',sans-serif;
+
+    background:#040B2D;
+
+}
+
+/* ==========================================================
+    BACKGROUND
+========================================================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    background:
+            linear-gradient(
+                    to bottom,
+                    #030B2C 0%,
+                    #07164F 45%,
+                    #102F7A 100%
+            );
+
+}
+
+/* ==========================================================
+    MOON
+========================================================== */
+
+#moon{
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    right:8%;
+
+    top:7%;
+
+    border-radius:50%;
+
+    background:
+            radial-gradient(circle,
+            #FFFDF7,
+            #FFE9A8 55%,
+            #FFD166 100%);
+
+    box-shadow:
+
+            0 0 35px #FFE08A,
+
+            0 0 80px #FFD166,
+
+            0 0 140px rgba(255,209,102,.6);
+
+}
+
+/* ==========================================================
+    STARS
+========================================================== */
+
+#stars{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:twinkle 2s infinite;
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.2;
+
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.7);
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+        transform:scale(.8);
+
+    }
+
+}
+
+/* ==========================================================
+    CLOUDS
+========================================================== */
+
+#clouds{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.cloud{
+
+    position:absolute;
+
+    width:260px;
+
+    height:75px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.08);
+
+    filter:blur(14px);
+
+}
+
+/* ==========================================================
+    HEARTS
+========================================================== */
+
+#floatingHearts{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.heart{
+
+    position:absolute;
+
+    font-size:20px;
+
+    opacity:.7;
+
+}
+
+/* ==========================================================
+    SCREEN
+========================================================== */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.screen.active{
+
+    display:flex;
+
+}
+
+/* ==========================================================
+    GLASS CARD
+========================================================== */
+
+.glassCard{
+
+    width:650px;
+
+    max-width:90%;
+
+    padding:55px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(18px);
+
+    background:
+
+            rgba(255,255,255,.12);
+
+    border:
+
+            1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+
+            0 20px 60px rgba(0,0,0,.45);
+
+}
+
+/* ==========================================================
+    TITLES
+========================================================== */
+
+.magicTitle{
+
+    font-family: 'Dancing Script', cursive;
+    color:#FFD166;
+
+    font-size:52px;
+
+    margin-bottom:20px;
+
+}
+
+#typingText{
+
+    min-height:70px;
+
+    font-size:34px;
+
+    font-weight:600;
+
+    color:white;
+
+}
+
+/* ==========================================================
+    LOADING BAR
+========================================================== */
+
+.progressContainer{
+
+    width:100%;
+
+    height:16px;
+
+    margin-top:40px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+
+            rgba(255,255,255,.15);
+
+}
+
+#progressBar{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+
+            linear-gradient(
+                    90deg,
+                    #FF4D94,
+                    #FFD166,
+                    white
+            );
+
+}
+
+#loadingPercent{
+
+    margin-top:20px;
+
+    font-size:24px;
+
+    color:white;
+
+}
+
+/* ==========================================================
+    PIN
+========================================================== */
+
+#pinInput{
+
+    margin-top:30px;
+
+    width:220px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    outline:none;
+
+}
+
+#unlockBtn{
+
+    margin-top:25px;
+
+    width:220px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    background:#FF4D94;
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+#unlockBtn:hover{
+
+    transform:scale(1.05);
+
+}
+
+#pinError{
+
+    margin-top:15px;
+
+    color:#ff8080;
+
+    font-weight:600;
+
+}
+
+.subText{
+
+    margin-top:15px;
+
+    color:white;
+
+}
+/* ===========================
+        PIN SCREEN
+=========================== */
+.pinCard{
+
+    width:360px;
+
+    max-width:90%;
+
+    padding:35px 30px;
+
+}
+.lockIcon{
+
+    font-size:55px;
+
+    margin-bottom:10px;
+
+}
+
+#pinDots{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin:30px 0;
+
+}
+
+.dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    border:2px solid white;
+
+    transition:.3s;
+
+}
+
+.dot.active{
+
+    background:#ff4d94;
+
+    box-shadow:0 0 15px #ff4d94;
+
+}
+.keypad{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,70px);
+
+    gap:12px;
+
+    justify-content:center;
+
+}
+.keypad button{
+
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+
+}
+.keypad button:hover{
+
+    transform:scale(1.08);
+
+    background:#ff4d94;
+
+}
+
+#pinError{
+
+    margin-top:20px;
+
+    height:25px;
+
+    color:#ff7b7b;
+
+}
+/* ===========================
+      WELCOME SCREEN
+=========================== */
+
+.welcomeCard{
+
+    width:700px;
+
+    max-width:90%;
+
+}
+
+.welcomeSmall{
+
+    font-family: 'Alex Brush', cursive;
+
+    color:#FFD166;
+
+    font-size:45px;
+
+}
+
+#welcomeTitle{
+    font-family: 'Dancing Script', cursive;
+
+    margin-top:15px;
+
+    font-size:48px;
+
+    color:white;
+
+}
+
+#welcomeText{
+    font-family: 'Caveat', cursive;
+    margin-top:30px;
+
+    line-height:1.9;
+
+    font-size:22px;
+
+    color:white;
+
+    min-height:120px;
+
+}
+
+#beginJourney{
+
+    margin-top:30px;
+
+    padding:15px 45px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#ff4d94,#ff7eb3);
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#beginJourney:hover{
+
+    transform:scale(1.08);
+
+}
+/*==============================
+MAGIC SCROLL
+==============================*/
+
+#magicScroll{
+
+    position:relative;
+
+    width:720px;
+
+    max-width:90%;
+
+    transform:scale(.2);
+
+    opacity:0;
+
+}
+
+#scrollTop{
+
+    width:100%;
+
+    height:26px;
+
+    background:#c89b5c;
+
+    border-radius:15px;
+
+    box-shadow:0 0 15px rgba(255,215,120,.4);
+
+}
+
+#scrollBottom{
+
+    width:100%;
+
+    height:26px;
+
+    background:#c89b5c;
+
+    border-radius:15px;
+
+    box-shadow:0 0 15px rgba(255,215,120,.4);
+
+}
+
+#scrollPaper{
+
+    background:
+
+            linear-gradient(
+
+                    #fffdf4,
+
+                    #fff6dd
+
+            );
+
+    color:#333;
+
+    padding:50px;
+
+    min-height:380px;
+
+    overflow:hidden;
+
+    border-left:8px solid #d5b177;
+
+    border-right:8px solid #d5b177;
+
+    box-shadow:
+
+            0 0 60px rgba(255,255,255,.2);
+
+}
+
+#welcomeTitle{
+
+    color:#ff4d94;
+
+}
+
+#welcomeText{
+
+    color:#444;
+
+}
+/* ===========================
+      COUNTDOWN SCREEN
+=========================== */
+
+.countdownCard{
+
+    width:850px;
+
+    max-width:95%;
+
+}
+
+.countTitle{
+
+    margin-top:15px;
+
+    font-size:42px;
+
+}
+
+#countdownContainer{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin:40px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.timeBox{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.1);
+
+    backdrop-filter:blur(15px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.timeBox span{
+
+    font-size:42px;
+
+    font-weight:bold;
+
+}
+
+.timeBox small{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+}
+
+.countText{
+
+    margin-top:20px;
+
+    font-size:20px;
+
+}
+
+#continueGame{
+
+    margin-top:35px;
+
+    padding:15px 45px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#ff4d94;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+/*==============================
+        HEART GAME
+==============================*/
+
+.gameContainer{
+
+    width:100%;
+
+    height:100%;
+
+    position:relative;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.gameContainer h1{
+
+    margin-top:50px;
+
+    font-size:48px;
+
+}
+
+.gameContainer p{
+
+    margin-top:15px;
+
+    font-size:22px;
+
+}
+
+#scoreBoard{
+
+    margin-top:20px;
+
+    font-size:30px;
+
+    color:#FFD166;
+
+}
+
+#heartArea{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.magicHeart{
+
+    position:absolute;
+
+    font-size:60px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    user-select:none;
+
+}
+
+.magicHeart:hover{
+
+    transform:scale(1.25);
+
+}
+#heartMessage{
+
+    margin-top:25px;
+
+    font-size:26px;
+
+    color:#FFD166;
+
+    min-height:40px;
+
+    font-weight:600;
+
+}
+/*==============================
+      GIFT + CAKE
+==============================*/
+
+
+.cakeContainer{
+
+    text-align:center;
+
+    color:white;
+
+}
+
+
+#giftBox{
+
+    font-size:120px;
+
+    cursor:pointer;
+
+    filter:drop-shadow(0 0 20px #ffd166);
+
+}
+
+
+#giftText{
+
+    font-size:22px;
+
+    margin:20px;
+
+}
+
+
+#cakeArea{
+
+    display:none;
+
+}
+
+
+#cakeEmoji{
+
+    font-size:150px;
+
+}
+
+
+#candles{
+
+    font-size:60px;
+
+}
+
+
+#blowButton,
+#letterButton{
+
+    margin-top:30px;
+
+    padding:15px 40px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#ff4d94;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+#birthdayWish{
+    font-family: 'Great Vibes', cursive;
+    display:none;
+
+    margin-top:30px;
+
+    color:#ffd166;
+
+    font-size:55px;
+
+}
+
+
+#letterButton{
+
+    display:none;
+
+}
+/* =========================
+   BLOW CANDLE EFFECT
+========================= */
+
+#smoke{
+
+    display:none;
+
+    font-size:60px;
+
+    animation: smokeMove 2s forwards;
+
+}
+
+
+@keyframes smokeMove{
+
+    0%{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+        transform:translateY(-100px);
+
+    }
+
+}/* ==========================
+        LETTER
+========================== */
+
+
+.letterContainer{
+
+    text-align:center;
+
+}
+
+
+#envelope{
+
+    font-size:150px;
+
+    cursor:pointer;
+
+}
+#letterPaper{
+
+    width:850px;
+
+    max-width:95%;
+
+    height:600px;
+
+    background:#fffaf0;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    scroll-behavior:smooth;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    display:none;
+
+    margin:auto;
+
+}
+#letterPaper h1{
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 55px;
+
+    color: #ff4d94;
+
+}
+
+#letterText{
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 30px;
+
+    line-height: 2;
+
+    color: #4a3b2f;
+
+    white-space: pre-wrap;
+
+}
+
+
+#watchAgain{
+
+    margin-top:30px;
+
+    padding:15px 40px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#ff4d94;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
